@@ -1,0 +1,20 @@
+- if @logs.length > 0
+	%h2= page_subtitle_with_month(@month)
+	%table#report
+		%tr
+			%th
+			%th Progress
+			%th Obstacles
+			%th Successes
+			%th Other Observations
+		- @logs.each_with_index do |log, i|
+			%tr
+				%td
+					Goal #{i + 1}:
+					%br< #{log.goal.name}
+				%td #{log.progress.to_percentage}
+				%td #{log.obstacles}
+				%td #{log.successes}
+				%td #{log.other}
+- else
+	%h3= "No logs available for #{@month}!"

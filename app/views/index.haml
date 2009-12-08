@@ -1,0 +1,8 @@
+- if @goals.length > 0
+	- @goals.each do |goal|
+		%h3<
+			%a{:href => "/goal/#{goal.id}/edit"} #{goal.name}
+		- goal.logs.each do |log|
+			%a{:href => "/log/#{log.id}/edit"} #{log.month}
+- else
+	%h3< You don't have any goals!

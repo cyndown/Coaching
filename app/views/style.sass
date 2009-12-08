@@ -1,0 +1,48 @@
+// Mix-ins
+=collapsed_table
+	:border-collapse collapse
+	:border 1px solid black
+	:padding 5px 
+	
+// Sass
+body
+	:font-family helvetica, arial, sans-serif
+	:padding 0px
+	:margin 5px
+
+a
+	:text-decoration none
+	
+	&:hover
+		:color #FF0000
+		
+div
+	&#delete
+		:width 168px
+		:float left
+		:text-align right
+		:margin 0px 10px 10px 0px
+	
+	&.hr
+		:width 100px
+		:align left
+		
+label
+	:width 120px
+	:float left
+	:text-align right
+	:margin 0px 10px 10px 0px
+	:clear both
+	
+table
+	+collapsed_table
+	&#report
+		:width 700px
+	
+th
+	+collapsed_table
+	:background-color #104E8B
+	:color #FFFFFF
+
+td
+	+collapsed_table

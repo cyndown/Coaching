@@ -1,0 +1,59 @@
+- if !@log
+	%form{:action => "/log/create", :method => "POST"}
+		%p
+			%label{:for => "goal_id"} Select Goal:
+			%select{:name => "goal_id"}
+				- @goals.each do |goal|
+					%option{ :value => goal.id } #{goal.name}
+		%p
+			%label{:for => "month"} Select Month:
+			%select{:name => "month"}
+				- list_of_months.each do |month|
+					%option #{month}
+		%p
+			%label{:for => "progress"} Progress:
+			%select{:name => "progress"}
+				- list_of_progress_markers.each do |p|
+					%option #{p.to_percentage}
+		%p
+			%label{:for => "obstacles"} Obstacles:
+			%textarea{:name => "obstacles"}
+		%p
+			%label{:for => "successes"} Successes:
+			%textarea{:name => "successes"}
+		%p
+			%label{:for => "other"} Other Observations:
+			%textarea{:name => "other"}
+		%p
+			%input{:type => "submit", :value => "Save"}
+- else
+	%form{:action => "/log/#{@log.id}/edit", :method => "POST"}
+		%p
+			%label{:for => "goal_id"} Select Goal:
+			%select{:name => "goal_id"}
+				- @goals.each do |goal|
+					- selected = (goal.id == @log.goal.id ? true : false)
+					%option{:selected => selected, :value => goal.id } #{goal.name}
+		%p
+			%label{:for => "month"} Select Month:
+			%select{:name => "month"}
+				- list_of_months.each do |month|
+					- selected = (month == @log.month ? true : false)
+					%option{:selected => selected} #{month}
+		%p
+			%label{:for => "progress"} Progress:
+			%select{:name => "progress"}
+				- list_of_progress_markers.each do |p|
+					- selected = (p == @log.progress ? true : false)
+					%option{:selected => selected} #{p.to_percentage}
+		%p
+			%label{:for => "obstacles"} Obstacles:
+			%textarea{:name => "obstacles"} #{@log.obstacles}
+		%p
+			%label{:for => "successes"} Successes:
+			%textarea{:name => "successes"} #{@log.successes}
+		%p
+			%label{:for => "other"} Other Observations:
+			%textarea{:name => "other"} #{@log.other}
+		%p
+			%input{:type => "submit", :value => "Save"}

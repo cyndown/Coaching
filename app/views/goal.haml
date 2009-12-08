@@ -1,0 +1,16 @@
+%div#form
+	- if !@goal
+		%form{:name => "goalAddForm", :action => '/goal/create', :method => 'POST'}
+			%p
+				%label{:for => "name"}Goal:
+				%input{:type => "text", :name => "name"}
+				%button{:type => "submit"} Add
+	- else
+		%form{:name => "goalEditForm", :action => "/goal/#{@goal.id}/edit", :method => "POST"}
+			%p
+				%label{:for => "name"}Goal:
+				%input{:type => "text", :name => "name", :value => @goal.name }
+				%button{:type => "submit"} Edit
+				%br
+				%div#delete
+					%a{:href => "#", :onclick => "post_to_url('/goal/#{@goal.id}/destroy');" } Delete Goal

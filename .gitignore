@@ -1,0 +1,4 @@
+app/data/*.sqlite3
+app/log/*.log
+*.tmproj
+.DS_Store

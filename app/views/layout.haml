@@ -1,0 +1,19 @@
+!!!
+%html{html_attrs}
+	%head
+		%title= page_title
+		%link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/style.css'}
+		%script{:type => 'text/javascript', :src => '/javascripts/main.js'}
+	%body
+		%h1= page_title
+		= yield
+	- unless request.path_info =~ /report/
+		%br
+		%div.hr
+			%hr
+		%div#footer
+			%a{:href => "/"} Home
+			|
+			%a{:href => "/goal/create"} Add a Goal
+			|
+			%a{:href => "/log/create"} Add a Log
