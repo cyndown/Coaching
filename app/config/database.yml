@@ -1,7 +1,7 @@
 development:
-  path: /Users/ender/coaching/app/data
+  path: $HOME/coaching/app/data
   filename: development.sqlite3
   
 production:
-  path: /Users/ender/coaching/app/data
+  path: $HOME/coaching/app/data
   filename: production.sqlite3
